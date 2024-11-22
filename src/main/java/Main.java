@@ -17,4 +17,5 @@ public class Main {
     }
     public String getNome(){
         return this.nome;
+    }
 }
