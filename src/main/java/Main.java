@@ -22,4 +22,8 @@ public class Main {
     public String getNome(String nome){
         return "ciao";
     }
+    
+    public String getCgonome(String cognome){
+        return "cognome";
+    }
 }
