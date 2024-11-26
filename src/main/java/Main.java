@@ -18,4 +18,8 @@ public class Main {
     public String getNome(){
         return this.nome;
     }
+    
+    public String getNome(String nome){
+        
+    }
 }
