@@ -23,7 +23,4 @@ public class Main {
         return "ciao";
     }
     
-    public String getCgonome(String cognome){
-        return "cognome";
-    }
 }
