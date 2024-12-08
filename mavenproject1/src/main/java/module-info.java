@@ -10,4 +10,5 @@ module com.unisa.mavenproject1 {
     requires javafx.base;
     requires javafx.graphicsEmpty;
     requires javafx.graphics;
+    requires javafx.controlsEmpty;
 }

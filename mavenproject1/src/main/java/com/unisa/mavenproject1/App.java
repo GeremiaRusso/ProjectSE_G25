@@ -18,7 +18,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         // Carica il file FXML dalla directory corretta
-        scene = new Scene(loadFXML("rubrica"), 1115, 772); // Dimensioni basate su quelle fornite in FXML
+        scene = new Scene(loadFXML("/rubrica"), 1115, 772); // Dimensioni basate su quelle fornite in FXML
         stage.setScene(scene);
         stage.setTitle("Rubrica");
         stage.show();
