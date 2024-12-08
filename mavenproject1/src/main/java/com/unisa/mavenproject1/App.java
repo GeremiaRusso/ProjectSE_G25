@@ -17,8 +17,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        // Carica il file FXML dalla directory corretta
-        scene = new Scene(loadFXML("/rubrica"), 1115, 772); // Dimensioni basate su quelle fornite in FXML
+        // Carica il file FXML dalla cartella corretta
+        scene = new Scene(loadFXML("rubrica"), 1115, 772); // Assicurati che "rubrica" sia il nome corretto del file FXML
         stage.setScene(scene);
         stage.setTitle("Rubrica");
         stage.show();
@@ -29,7 +29,7 @@ public class App extends Application {
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
-        // Aggiunge il percorso corretto per trovare il file FXML
+        // Carica il file FXML dalla cartella /resources/fxml/
         return new FXMLLoader(App.class.getResource("/fxml/" + fxml + ".fxml")).load();
     }
 
