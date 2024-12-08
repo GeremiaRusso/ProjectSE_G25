@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['contatto_0',['Contatto',['../classcom_1_1mycompany_1_1projectse_1_1_contatto.html',1,'com::mycompany::projectse']]]
+  ['app_0',['App',['../classcom_1_1unisa_1_1mavenproject1_1_1_app.html',1,'com::unisa::mavenproject1']]]
 ];
