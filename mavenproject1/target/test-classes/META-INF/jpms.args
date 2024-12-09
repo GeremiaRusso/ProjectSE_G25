@@ -1,4 +1,0 @@
---patch-module
-com.unisa.mavenproject1=_
---add-reads
-com.unisa.mavenproject1=ALL-UNNAMED

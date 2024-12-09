@@ -17,8 +17,7 @@
 
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.unisa.mavenproject1.RubricaController">
-</AnchorPane>
-   <children>
+   <children> 
       <Pane layoutX="334.0" layoutY="198.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <SplitPane layoutX="200.0" prefHeight="772.0" prefWidth="916.0">
