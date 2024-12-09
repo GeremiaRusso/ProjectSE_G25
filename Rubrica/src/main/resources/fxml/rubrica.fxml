@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="779.0" prefWidth="1232.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.RubricaController">
+   <children>
+      <SplitPane dividerPositions="0.1926829268292683" layoutX="44.0" layoutY="148.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <TableView fx:id="tableview" layoutX="302.0" layoutY="133.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn fx:id="nameClm" prefWidth="102.0" text="Nome" />
+                      <TableColumn fx:id="surnameClm" prefWidth="103.0" text="Cognome" />
+                        <TableColumn fx:id="num1Clm" prefWidth="110.0" text="1° Numero" />
+                        <TableColumn fx:id="num2Clm" prefWidth="110.0" text="2° Numero" />
+                        <TableColumn fx:id="num3Clm" prefWidth="110.0" text="3° Numero" />
+                        <TableColumn fx:id="email1Clm" prefWidth="120.0" text="1° E-mail" />
+                        <TableColumn fx:id="email2Clm" prefWidth="120.0" text="2° E-mail" />
+                        <TableColumn fx:id="email3Clm" prefWidth="120.0" text="3° E-mail" />
+                        <TableColumn fx:id="tagClm" prefWidth="100.0" text="Tag" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <Pane prefHeight="779.0" prefWidth="233.0">
+         <children>
+            <MenuButton layoutX="13.0" layoutY="14.0" mnemonicParsing="false" text="Opzioni Contatto">
+               <items>
+                  <MenuItem fx:id="addButton" mnemonicParsing="false" onAction="#addContact" text="Aggiungi" />
+                  <MenuItem fx:id="removeButton" mnemonicParsing="false" onAction="#removeContact" text="Rimuovi" />
+                  <MenuItem fx:id="modifyButton" mnemonicParsing="false" onAction="#modifyContact" text="Modifica" />
+                  <MenuItem fx:id="searchButton" mnemonicParsing="false" onAction="#searchContact" text="Cerca" />
+                  <MenuItem fx:id="exportcontactButton" mnemonicParsing="false" onAction="#exportContact" text="Export contatto" />
+               </items>
+            </MenuButton>
+            <Label layoutX="18.0" layoutY="110.0" text="Nome" />
+            <TextField fx:id="nameField" layoutX="14.0" layoutY="131.0" />
+            <TextField fx:id="surnameField" layoutX="14.0" layoutY="196.0" />
+            <Label layoutX="18.0" layoutY="175.0" text="Cognome" />
+            <Label layoutX="18.0" layoutY="246.0" text="1° Numero" />
+            <TextField fx:id="num1Field" layoutX="14.0" layoutY="267.0" />
+            <TextField fx:id="num2Field" layoutX="14.0" layoutY="332.0" />
+            <Label layoutX="18.0" layoutY="311.0" text="2° Numero" />
+            <Label layoutX="18.0" layoutY="377.0" text="3° Numero" />
+            <TextField fx:id="num3Field" layoutX="14.0" layoutY="398.0" />
+            <Label layoutX="18.0" layoutY="446.0" text="1° E-mail" />
+            <TextField fx:id="email1Field" layoutX="14.0" layoutY="467.0" />
+            <Label layoutX="18.0" layoutY="515.0" text="2° E-mail" />
+            <TextField fx:id="email2Field" layoutX="14.0" layoutY="536.0" />
+            <Label layoutX="18.0" layoutY="583.0" text="3° E-mail" />
+            <TextField fx:id="email3Field" layoutX="14.0" layoutY="604.0" />
+            <TextField fx:id="tagField" layoutX="14.0" layoutY="671.0" />
+            <Label layoutX="18.0" layoutY="650.0" text="Tag" />
+            <MenuButton layoutX="17.0" layoutY="55.0" mnemonicParsing="false" text="Opzioni Rubrica">
+              <items>
+                <MenuItem fx:id="exportrubricaButton" mnemonicParsing="false" onAction="#exportRubrica" text="Export Rubrica" />
+                <MenuItem fx:id="importrubricaButton" mnemonicParsing="false" onAction="#importRubrica" text="Import Rubrica" />
+              </items>
+            </MenuButton>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
