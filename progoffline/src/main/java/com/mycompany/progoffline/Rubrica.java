@@ -2,13 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.unisa.mavenproject1;
+package com.mycompany.progoffline;
 
 /**
  *
- * @author gerem
+ * @author Alessio
  */
-
 import java.io.*;
 import java.util.TreeSet;
 
