@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.Scene?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="fxml.SearchController">
+    <children>
+        <TextField fx:id="searchField" layoutX="20.0" layoutY="20.0" prefWidth="300.0" promptText="Cerca per Cognome o per Tag"/>
+        <TableView fx:id="searchResultsTable" layoutX="20.0" layoutY="60.0" prefWidth="1000.0" prefHeight="600.0">
+            <columns>
+                <TableColumn fx:id="nameClm" text="Nome" prefWidth="90.0" />
+                <TableColumn fx:id="surnameClm" text="Cognome" prefWidth="90.0" />
+                <TableColumn fx:id="num1Clm" text="1°Numero" prefWidth="90.0" />
+                <TableColumn fx:id="num2Clm" text="2°Numero" prefWidth="90.0" />
+                <TableColumn fx:id="num3Clm" text="3°Numero" prefWidth="90.0" />
+                <TableColumn fx:id="email1Clm" text="1°E-mail" prefWidth="90.0" />
+                <TableColumn fx:id="email2Clm" text="2°E-mail" prefWidth="90.0" />
+                <TableColumn fx:id="email3Clm" text="3°E-mail" prefWidth="90.0" />
+                <TableColumn fx:id="tagClm" text="Tag" prefWidth="90.0" />
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>

@@ -27,6 +27,7 @@ public class Rubrica {
     }
 
     public List<Contatto> searchContatti() {
+        
     }
 
     public void exportRubrica(String namefile) {

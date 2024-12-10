@@ -110,6 +110,17 @@ public class Contatto implements Comparable<Contatto> {
     // Override della compareTo per ordinare i contatti
     @Override
     public int compareTo(Contatto other) {
+       
+        String thisCognome = this.cognome != null ? this.cognome : "";
+        String otherCognome = other.cognome != null ? other.cognome : "";
+        int result = thisCognome.compareTo(otherCognome);
+
+        if (result == 0) {
+            String thisNome = this.nome != null ? this.nome : "";
+            String otherNome = other.nome != null ? other.nome : "";
+            result = thisNome.compareTo(otherNome);
+        }
+        return result;
     }
 }
 

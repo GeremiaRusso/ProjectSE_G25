@@ -7,6 +7,7 @@ package fxml;
 import com.mycompany.rubricatelefonica.Contatto;
 import com.mycompany.rubricatelefonica.ErrorsPrint;
 import com.mycompany.rubricatelefonica.Rubrica;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
@@ -14,12 +15,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -128,14 +133,45 @@ public class RubricaController implements Initializable {
 
     @FXML
     private void removeContact(ActionEvent event) {
+         Contatto selectedContatto = tableview.getSelectionModel().getSelectedItem(); //sceglie il contatto cliccato
+        if (selectedContatto != null) {
+            rubrica.removeContatto(selectedContatto);
+            refreshTable();
+        } else {
+            System.out.println("Seleziona un contatto da rimuovere.");
+        }
     }
 
     @FXML
     private void modifyContact(ActionEvent event) {
+        Contatto selectedContatto = tableview.getSelectionModel().getSelectedItem();
+
+    if (selectedContatto != null) {
+        // Sposta gli items del contatto selezionato dalla lista osservabile nei field di inserimento per poter modificare gli items
+        nameField.setText(selectedContatto.getNome());
+        surnameField.setText(selectedContatto.getCognome());
+        num1Field.setText(selectedContatto.getNumero1());
+        num2Field.setText(selectedContatto.getNumero2());
+        num3Field.setText(selectedContatto.getNumero3());
+        email1Field.setText(selectedContatto.getEmail1());
+        email2Field.setText(selectedContatto.getEmail2());
+        email3Field.setText(selectedContatto.getEmail3());
+        tagField.setText(selectedContatto.getTag());
+
+        // Rimuove il contatto dalla rubrica e dalla lista osservabile caricandolo nei field dell'inserimento per poter aggiungerlo senza reinserire tutto da capo ma solo modificando gli items
+        rubrica.removeContatto(selectedContatto);
+        contattiObservableList.remove(selectedContatto);
+
+        // Aggiorna la tabella eliminando il contatto che si sta per modificare
+        refreshTable();
+    } else {
+        ErrorsPrint.showMessage("Errore", "Seleziona un contatto da modificare.");
+    }
     }
 
     @FXML
     private void searchContact(ActionEvent event) {
+      
     }
 
     @FXML
