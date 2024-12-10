@@ -26,11 +26,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author gerem
- */
+
 public class RubricaController implements Initializable {
 
     private Rubrica rubrica;

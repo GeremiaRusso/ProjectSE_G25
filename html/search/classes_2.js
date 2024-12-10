@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['rubrica_0',['Rubrica',['../classcom_1_1mycompany_1_1rubricatelefonica_1_1_rubrica.html',1,'com::mycompany::rubricatelefonica']]],
-  ['rubricacontroller_1',['RubricaController',['../classfxml_1_1_rubrica_controller.html',1,'fxml']]]
+  ['errorsprint_0',['ErrorsPrint',['../classcom_1_1mycompany_1_1rubricatelefonica_1_1_errors_print.html',1,'com::mycompany::rubricatelefonica']]]
 ];

@@ -10,10 +10,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-/**
- *
- * @author gerem
- */
+
 public class ErrorsPrint {
     // Crea una nuova scena per far visualizzare un messaggio tramite la GUI in casi specifici sollevati dal controller
     public static void showMessage(String title, String message) {
