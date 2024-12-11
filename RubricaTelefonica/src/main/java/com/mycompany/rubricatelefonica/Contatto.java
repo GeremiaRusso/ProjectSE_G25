@@ -4,25 +4,37 @@ public class Contatto implements Comparable<Contatto> {
 
     private String nome;
     private String cognome;
-    private String tag;
     private String numero1;
     private String numero2;
     private String numero3;
     private String email1;
     private String email2;
     private String email3;
+    private String tag;
 
     // Costruttore
-    public Contatto(String nome, String cognome, String tag,String numero1, String numero2, String numero3,String email1, String email2, String email3){
+    public Contatto(String nome, String cognome,String numero1, String numero2, String numero3,String email1, String email2, String email3,String tag){
         this.nome = nome;
         this.cognome = cognome;
-        this.tag = tag;
         this.numero1 = numero1;
         this.numero2 = numero2;
         this.numero3 = numero3;
         this.email1 = email1;
         this.email2 = email2;
         this.email3 = email3;
+        this.tag = tag;
+    }
+    
+    public Contatto() {
+        this.nome = "";
+        this.cognome = "";
+        this.numero1 = "";
+        this.numero2 = "";
+        this.numero3 = "";
+        this.email1 = "";
+        this.email2 = "";
+        this.email3 = "";
+        this.tag = "";
     }
 
     // Getter e Setter
@@ -99,19 +111,23 @@ public class Contatto implements Comparable<Contatto> {
     }
 
     // Metodo per esportare il contatto come CSV
-public String toCSV() {
-        return String.join(",",
-                (nome != null ? nome : ""),
-                (cognome != null ? cognome : ""),
-                (tag != null ? tag : ""),
-                (numero1 != null ? numero1 : ""),
-                (numero2 != null ? numero2 : ""),
-                (numero3 != null ? numero3 : ""),
-                (email1 != null ? email1 : ""),
-                (email2 != null ? email2 : ""),
-                (email3 != null ? email3 : "")
-        );
-    }
+    public String toCSV() {
+    String result = String.join(",",
+            (nome != null && !nome.isEmpty() ? nome : ""),
+            (cognome != null && !cognome.isEmpty() ? cognome : ""),
+            (numero1 != null && !numero1.isEmpty() ? numero1 : ""),
+            (numero2 != null && !numero2.isEmpty() ? numero2 : ""),
+            (numero3 != null && !numero3.isEmpty() ? numero3 : ""),
+            (email1 != null && !email1.isEmpty() ? email1 : ""),
+            (email2 != null && !email2.isEmpty() ? email2 : ""),
+            (email3 != null && !email3.isEmpty() ? email3 : ""),
+            (tag != null && !tag.isEmpty() ? tag : "")
+    );
+    System.out.println("CSV Result: " + result);  // Stampa per il debug
+    return result;
+}
+
+
 
     // Metodo statico per creare un contatto da una riga CSV
 public static Contatto fromCSV(String csv) {

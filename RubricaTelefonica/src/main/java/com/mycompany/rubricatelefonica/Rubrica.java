@@ -6,24 +6,26 @@ package com.mycompany.rubricatelefonica;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 public class Rubrica {
 
-    private TreeSet<Contatto> rubrica;
+    private List<Contatto> rubrica;
 
     public Rubrica() {
-        this.rubrica = new TreeSet<>();
+        this.rubrica = new ArrayList<>();
     }
 
     public void addContatto(Contatto contatto) {
         rubrica.add(contatto);
+        ordinaRubrica();
     }
 
     public void removeContatto(Contatto contatto) {
         rubrica.remove(contatto);
+        ordinaRubrica();
     }
 
     public List<Contatto> searchContatti(String keyword) {
@@ -57,5 +59,9 @@ public class Rubrica {
 
     public List<Contatto> getContatti() {
         return new ArrayList<>(rubrica);
+    }
+    
+     private void ordinaRubrica() {
+        Collections.sort(rubrica);  
     }
 }
