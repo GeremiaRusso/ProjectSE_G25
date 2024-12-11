@@ -26,16 +26,36 @@ public class Rubrica {
         rubrica.remove(contatto);
     }
 
-    public List<Contatto> searchContatti() {
-        
+    public List<Contatto> searchContatti(String keyword) {
+        return rubrica.stream().filter(contatto -> contatto.getCognome().toLowerCase().contains(keyword.toLowerCase())).collect(Collectors.toList());
     }
 
     public void exportRubrica(String namefile) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(namefile))) {
+            for (Contatto contatto : rubrica) {
+                writer.write(contatto.toCSV());
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            ErrorsPrint.showMessage("Errore durante l'esportazione: " , e.getMessage());
+        }
     }
 
     public void importRubrica(String namefile) {
+         try (BufferedReader reader = new BufferedReader(new FileReader(namefile))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                Contatto contatto = Contatto.fromCSV(line);
+                if (contatto != null) {
+                    rubrica.add(contatto);
+                }
+            }
+        } catch (IOException e) {
+            ErrorsPrint.showMessage("Errore durante l'importazione: ", e.getMessage());
+        }
     }
 
     public List<Contatto> getContatti() {
+        return new ArrayList<>(rubrica);
     }
 }

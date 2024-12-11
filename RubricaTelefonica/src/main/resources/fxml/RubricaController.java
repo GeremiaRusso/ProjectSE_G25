@@ -7,6 +7,8 @@ package fxml;
 import com.mycompany.rubricatelefonica.Contatto;
 import com.mycompany.rubricatelefonica.ErrorsPrint;
 import com.mycompany.rubricatelefonica.Rubrica;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -167,19 +169,45 @@ public class RubricaController implements Initializable {
 
     @FXML
     private void searchContact(ActionEvent event) {
-      
+       try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("search.fxml"));
+        Parent root = loader.load();  // Carica la scena per attivare la ricerca in tempo reale a seconda dell'inserimento
+
+        SearchController searchController = loader.getController(); // Prende il controller dal loader, quindi la chiamata alla scena precedente
+        ObservableList<Contatto> contatti = FXCollections.observableArrayList(rubrica.getContatti()); // Ottiene i contatti salvati
+        searchController.setContatti(contatti);  // Passa tutti i contatti al controller della ricerca in tempo reale
+
+        Stage stage = new Stage();
+        stage.setTitle("Cerca Contatti");
+        stage.setScene(new Scene(root)); // Imposta la scena
+        stage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
     }
 
     @FXML
-    private void exportContact(ActionEvent event) {
+    private void exportContact(ActionEvent event) throws IOException {
+         Contatto selected = tableview.getSelectionModel().getSelectedItem();
+        if (selected != null) {
+            String nomefile = selected.getCognome() + "_" + selected.getNome() + ".csv";
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomefile))) {
+                writer.write(selected.toCSV());
+            }
+        } else {
+            ErrorsPrint.showMessage("Errore input","Seleziona un contatto da esportare.");
+        }
     }
 
     @FXML
     private void exportRubrica(ActionEvent event) {
+        rubrica.exportRubrica("rubrica.csv");
     }
 
     @FXML
     private void importRubrica(ActionEvent event) {
+        rubrica.importRubrica("rubrica.csv");
+        refreshTable();
     }
     
      private void refreshTable() {
