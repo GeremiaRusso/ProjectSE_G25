@@ -99,12 +99,41 @@ public class Contatto implements Comparable<Contatto> {
     }
 
     // Metodo per esportare il contatto come CSV
-    public String toCSV() {
+public String toCSV() {
+        return String.join(",",
+                (nome != null ? nome : ""),
+                (cognome != null ? cognome : ""),
+                (tag != null ? tag : ""),
+                (numero1 != null ? numero1 : ""),
+                (numero2 != null ? numero2 : ""),
+                (numero3 != null ? numero3 : ""),
+                (email1 != null ? email1 : ""),
+                (email2 != null ? email2 : ""),
+                (email3 != null ? email3 : "")
+        );
     }
 
     // Metodo statico per creare un contatto da una riga CSV
-    public static Contatto fromCSV(String csv) {
-    }
+public static Contatto fromCSV(String csv) {
+    // Splittiamo la stringa CSV per ogni virgola
+    String[] parts = csv.split(",");
+
+    // Se ci sono più di 9 elementi, è possibile che ci siano spazi vuoti extra nel CSV
+    // In tal caso dobbiamo garantire che ogni campo venga correttamente mappato anche se alcuni valori sono vuoti
+    // Utilizziamo Math.min per evitare un ArrayIndexOutOfBoundsException
+    String nome = (parts.length > 0) ? parts[0] : "";
+    String cognome = (parts.length > 1) ? parts[1] : "";
+    String tag = (parts.length > 2) ? parts[2] : "";
+    String numero1 = (parts.length > 3) ? parts[3] : "";
+    String numero2 = (parts.length > 4) ? parts[4] : "";
+    String numero3 = (parts.length > 5) ? parts[5] : "";
+    String email1 = (parts.length > 6) ? parts[6] : "";
+    String email2 = (parts.length > 7) ? parts[7] : "";
+    String email3 = (parts.length > 8) ? parts[8] : "";
+
+    // Restituiamo il nuovo oggetto Contatto
+    return new Contatto(nome, cognome, tag, numero1, numero2, numero3, email1, email2, email3);
+}
 
 
     // Override della compareTo per ordinare i contatti
