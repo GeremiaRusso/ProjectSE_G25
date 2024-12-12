@@ -136,19 +136,19 @@ public static Contatto fromCSV(String csv) {
 
     // Se ci sono più di 9 elementi, è possibile che ci siano spazi vuoti extra nel CSV
     // In tal caso dobbiamo garantire che ogni campo venga correttamente mappato anche se alcuni valori sono vuoti
-    // Utilizziamo Math.min per evitare un ArrayIndexOutOfBoundsException
+    
     String nome = (parts.length > 0) ? parts[0] : "";
     String cognome = (parts.length > 1) ? parts[1] : "";
-    String tag = (parts.length > 2) ? parts[2] : "";
-    String numero1 = (parts.length > 3) ? parts[3] : "";
-    String numero2 = (parts.length > 4) ? parts[4] : "";
-    String numero3 = (parts.length > 5) ? parts[5] : "";
-    String email1 = (parts.length > 6) ? parts[6] : "";
-    String email2 = (parts.length > 7) ? parts[7] : "";
-    String email3 = (parts.length > 8) ? parts[8] : "";
+    String numero1 = (parts.length > 2) ? parts[2] : "";
+    String numero2 = (parts.length > 3) ? parts[3] : "";
+    String numero3 = (parts.length > 4) ? parts[4] : "";
+    String email1 = (parts.length > 5) ? parts[5] : "";
+    String email2 = (parts.length > 6) ? parts[6] : "";
+    String email3 = (parts.length > 7) ? parts[7] : "";
+    String tag = (parts.length > 8) ? parts[8] : "";
 
     // Restituiamo il nuovo oggetto Contatto
-    return new Contatto(nome, cognome, tag, numero1, numero2, numero3, email1, email2, email3);
+    return new Contatto(nome, cognome, numero1, numero2, numero3, email1, email2, email3, tag);
 }
 
 

@@ -17,21 +17,24 @@ public class Rubrica {
     public Rubrica() {
         this.rubrica = new ArrayList<>();
     }
-
+    //aggiungi contatto in rubrica
     public void addContatto(Contatto contatto) {
         rubrica.add(contatto);
         ordinaRubrica();
     }
-
+    
+    //rimuovi contatto in rubrica
     public void removeContatto(Contatto contatto) {
         rubrica.remove(contatto);
         ordinaRubrica();
     }
-
+    
+    //cerca contatto nella rubrica
     public List<Contatto> searchContatti(String keyword) {
         return rubrica.stream().filter(contatto -> contatto.getCognome().toLowerCase().contains(keyword.toLowerCase())).collect(Collectors.toList());
     }
 
+    //esporta rubrica su file
     public void exportRubrica(String namefile) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(namefile))) {
             for (Contatto contatto : rubrica) {
@@ -43,6 +46,8 @@ public class Rubrica {
         }
     }
 
+    
+    //importa rubrica da file
     public void importRubrica(String namefile) {
          try (BufferedReader reader = new BufferedReader(new FileReader(namefile))) {
             String line;
@@ -57,10 +62,14 @@ public class Rubrica {
         }
     }
 
+    
+    //ottieni tutti i contatti della rubrica
     public List<Contatto> getContatti() {
         return new ArrayList<>(rubrica);
     }
     
+    
+    //metodo che ordina la rubrica
      private void ordinaRubrica() {
         Collections.sort(rubrica);  
     }

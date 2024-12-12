@@ -16,7 +16,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
@@ -51,8 +50,8 @@ public class RubricaTest {
     /**
      * Test of addContatto method, of class Rubrica.
      */
-   @Test
-public void testAddContatto() {
+    @Test
+    public void testAddContatto() {
     // Crea un oggetto Contatto con valori validi
     Contatto contatto = new Contatto("Mario", "Rossi", "1234567890","","","","","",""); 
     Rubrica instance = new Rubrica();
@@ -80,8 +79,8 @@ public void testAddContatto() {
     /**
      * Test of searchContatti method, of class Rubrica.
      */
-@Test
-public void testSearchContatti() {
+    @Test
+    public void testSearchContatti() {
     System.out.println("searchContatti");
 
     // Parola chiave per la ricerca

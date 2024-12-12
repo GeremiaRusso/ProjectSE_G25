@@ -61,7 +61,7 @@ public class RubricaController implements Initializable {
 
 
     /**
-     * Initializes the controller class.
+     * inizializzazione controller
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -96,7 +96,7 @@ public class RubricaController implements Initializable {
         String email3 = email3Field.getText();
         String tag = tagField.getText();
 
-        //Aggiunte tutte le casistiche in cui l'aggiunta del contatto viene bloccata a seconda dell'errore di input causato, stampando anche quale sia stato
+        //Aggiunta di tutte le casistiche in cui l'aggiunta del contatto viene bloccata a seconda dell'errore di input causato, stampando anche quale sia stato
             if (nome.isEmpty() && cognome.isEmpty()) 
                 ErrorsPrint.showMessage("Errore", "Inserire obbligatoriamente almeno uno tra Nome e Cognome");
                 
@@ -121,7 +121,7 @@ public class RubricaController implements Initializable {
             
        if((!nome.isEmpty() || !cognome.isEmpty())  && (PATTERNnumber.matcher(num1).matches() ||num1.isEmpty()) && (PATTERNnumber.matcher(num2).matches() || num2.isEmpty()) && (PATTERNnumber.matcher(num3).matches() || num3.isEmpty()) && (PATTERNEmail.matcher(email1).matches() || email1.isEmpty()) && (PATTERNEmail.matcher(email2).matches() || email2.isEmpty()) && (PATTERNEmail.matcher(email3).matches() || email3.isEmpty())){
            //aggiunta del contatto in rubrica e aggiornamento della lista osservabile tramite la GUI se non ci sono stati problemi nell'inserimento
-            Contatto contatto = new Contatto(nome, cognome, tag, num1, num2, num3, email1, email2, email3);
+            Contatto contatto = new Contatto(nome, cognome, num1, num2, num3, email1, email2, email3,tag);
             rubrica.addContatto(contatto);
             refreshTable(); 
             clearFields();
@@ -129,6 +129,8 @@ public class RubricaController implements Initializable {
         
     }
 
+    
+    //tasto rimuovi contatto
     @FXML
     private void removeContact(ActionEvent event) {
          Contatto selectedContatto = tableview.getSelectionModel().getSelectedItem(); //sceglie il contatto cliccato
@@ -140,6 +142,7 @@ public class RubricaController implements Initializable {
         }
     }
 
+    //tasto modifica contatto
     @FXML
     private void modifyContact(ActionEvent event) {
         Contatto selectedContatto = tableview.getSelectionModel().getSelectedItem();
@@ -166,7 +169,9 @@ public class RubricaController implements Initializable {
         ErrorsPrint.showMessage("Errore", "Seleziona un contatto da modificare.");
     }
     }
-
+    
+    
+    //tasto ricerca contatto
     @FXML
     private void searchContact(ActionEvent event) {
        try {
@@ -186,6 +191,8 @@ public class RubricaController implements Initializable {
     }
     }
 
+    
+    //tasto esporta contatto su file
     @FXML
     private void exportContact(ActionEvent event) throws IOException {
          Contatto selected = tableview.getSelectionModel().getSelectedItem();
@@ -199,22 +206,29 @@ public class RubricaController implements Initializable {
         }
     }
 
+    
+    //tasto esporta rubrica su file
     @FXML
     private void exportRubrica(ActionEvent event) {
         rubrica.exportRubrica("rubrica.csv");
     }
 
+    
+    //tasto importa rubrica da file
     @FXML
     private void importRubrica(ActionEvent event) {
         rubrica.importRubrica("rubrica.csv");
         refreshTable();
     }
     
+    //metodo per aggiornare la grafica dei contatti visibili dopo ogni operazione
      private void refreshTable() {
         contattiObservableList.setAll(rubrica.getContatti());
         tableview.refresh();
     }
 
+     
+     //metodo per svuotare i campi di inserimento dopo un'operazione tramite tasto
     private void clearFields() {
         nameField.clear();
         surnameField.clear();

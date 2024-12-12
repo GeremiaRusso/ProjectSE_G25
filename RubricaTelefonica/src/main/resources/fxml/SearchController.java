@@ -62,16 +62,17 @@ public class SearchController implements Initializable {
         email3Clm.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmail3()));
         tagClm.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTag()));
 
-        // Filtro in tempo reale sulla ricerca del cognome e del tag
+        // Filtro in tempo reale sulla ricerca del cognome e del nome
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue == null || newValue.isEmpty()) {
         searchResultsTable.setItems(contattiObservableList);
     } else {
         ObservableList<Contatto> filteredList = FXCollections.observableArrayList();
         for (Contatto contatto : contattiObservableList) {
-            // Filtro per cognome e tag (entrambi i campi vengono considerati nella ricerca)
+            // Filtro per cognome, nome e tag per la ricerca (tutti i campi vengono considerati nella ricerca)
             if (contatto.getCognome().toLowerCase().contains(newValue.toLowerCase()) ||
-                contatto.getTag().toLowerCase().contains(newValue.toLowerCase())) {
+                contatto.getNome().toLowerCase().contains(newValue.toLowerCase())|| 
+                contatto.getTag().toLowerCase().contains(newValue.toLowerCase())){
                 filteredList.add(contatto);
             }
         }

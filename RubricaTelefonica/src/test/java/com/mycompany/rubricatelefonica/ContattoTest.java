@@ -109,7 +109,7 @@ public void testToCSV() {
 
     @Test
     public void testFromCSV() {
-        String csv = "Mario,Rossi,123456789,,,,,,,";
+        String csv = "Mario,Rossi,123456789,,,,,,";
         Contatto expResult = new Contatto("Mario", "Rossi", "123456789", "", "", "", "", "", "");
         Contatto result = Contatto.fromCSV(csv);
         assertEquals(expResult.toCSV(), result.toCSV(), "fromCSV non restituisce l'oggetto corretto.");
